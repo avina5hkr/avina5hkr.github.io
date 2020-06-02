@@ -1,0 +1,50 @@
+@font-face {
+  font-family: "Avenue Mono";
+  src: url("../fonts/avenue-mono.otf") format("opentype");
+}
+
+html {
+	-webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+	font-family: "Avenue Mono";
+	background: black;
+	color: white;
+}
+
+#home {
+	width: 90%;
+	margin: auto;
+	display: block;
+	line-height: 1em;
+}
+
+#hello {
+	font-size: 16vw;
+	line-height: 1.25em;
+	margin: 20vw 5vw 20vw 5vw;
+	display: block;
+}
+
+#about {
+	font-size: 3.2vw;
+	line-height: 1.8em;
+	margin: 6vw 6vw 25vw 6vw;
+}
+
+#about p {
+	margin-bottom: 2em;
+}
+
+#about a,
+#about a:active,
+#about a:visited {
+	border-bottom: 0.05em solid white;
+	text-decoration: none;
+	color: white;
+	display: inline-block;
+	line-height: 1.6em;
+}
+
+#links li {
+	margin-bottom: 1em;
+}
