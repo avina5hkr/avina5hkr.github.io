@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avinash Kumar - Senior Software Engineer</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles and reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(120deg, #e0e7ff 0%, #f0fdfa 100%);
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            color: #334155;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: -100px; left: -100px; right: -100px; bottom: -100px;
+            z-index: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(96, 165, 250, 0.33) 0%, transparent 60%),
+                radial-gradient(circle at 80% 70%, rgba(167, 243, 208, 0.33) 0%, transparent 60%);
+            pointer-events: none;
+            animation: bgMove 18s linear infinite alternate;
+        }
+        
+        @keyframes bgMove {
+            0% { background-position: 0% 0%, 100% 100%, 0 0; }
+            100% { background-position: 100% 100%, 0% 0%, 0 0; }
+        }
+        
+        .resume {
+            max-width: 950px;
+            margin: 60px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 8px 40px rgba(37, 99, 235, 0.18);
+            border-radius: 24px;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(59, 130, 246, 0.13);
+            backdrop-filter: blur(16px);
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Header styles */
+        .resume-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 22px;
+            border-bottom: 1px solid #e2e8f0;
+            position: relative;
+        }
+        
+        .resume-header::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 120px;
+            background: #3b82f6;
+            border-radius: 60%;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.4em;
+            font-weight: 800;
+            color: #2563eb !important;
+            margin: 0 0 6px;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #2563eb 30%, #3b82f6 70%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent !important;
+            text-shadow: 0 1px 1px rgba(37, 99, 235, 0.1);
+            letter-spacing: 0.5px;
+        }
+        
+        .title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3em;
+            color: #3b82f6 !important;
+            font-weight: 500;
+            margin: 0 0 20px;
+            letter-spacing: 0.3px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 22px;
+            background: rgba(241, 245, 249, 0.5);
+            padding: 12px 16px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #475569 !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            text-decoration: none;
+        }
+        
+        a.contact-item {
+            color: #3b82f6 !important;
+        }
+        
+        .contact-item:hover {
+            background: rgba(59, 130, 246, 0.15);
+            transform: translateY(-2px);
+            text-decoration: none;
+            color: #2563eb !important;
+        }
+        
+        .contact-item i {
+            color: #3b82f6 !important;
+            font-size: 1.1em;
+        }
+        
+        .contact-item i.fab {
+            font-size: 1.2em;
+        }
+        
+        /* Grid layout */
+        .resume-grid {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 32px;
+        }
+        
+        /* Section styles */
+        .section {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            animation: sectionFadeIn 0.7s ease-out forwards;
+        }
+        
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        
+        @keyframes sectionFadeIn {
+            0% { opacity: 0; transform: translateY(20px) scale(0.98); }
+            100% { opacity: 1; transform: none; }
+        }
+        
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.25em;
+            font-weight: 700;
+            color: #2563eb !important;
+            letter-spacing: 1.3px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+            position: relative;
+            text-transform: uppercase;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 45px;
+            height: 1px;
+            background: #3b82f6;
+        }
+        
+        .section p {
+            font-size: 0.9em;
+            line-height: 1.6;
+            color: #475569;
+            margin-bottom: 16px;
+        }
+        
+        /* Experience items */
+        .experience-item, .education-item, .award-item {
+            padding: 16px;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            border: 1px solid #f1f5f9;
+        }
+        
+        .experience-item:hover, .education-item:hover, .award-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.12);
+            border-color: rgba(59, 130, 246, 0.2);
+        }
+        
+        .experience-item h3, .education-item h3, .award-item h3 {
+            color: #2563eb !important;
+            font-size: 1.05em;
+            font-weight: 600;
+            margin: 0 0 8px;
+            letter-spacing: 0.2px;
+        }
+        
+        .company, .school {
+            color: #3b82f6 !important;
+            font-weight: 600;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+            letter-spacing: 0.2px;
+        }
+        
+        .job-description {
+            color: #64748b;
+            font-style: italic;
+            margin-bottom: 12px;
+            font-size: 0.85em;
+            line-height: 1.5;
+        }
+        
+        .company-info, .education-details {
+            background: rgba(241, 245, 249, 0.6);
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .duration-location {
+            display: flex;
+            gap: 16px;
+            color: #64748b;
+            font-size: 0.75em;
+        }
+        
+        .duration-location span, .education-details span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        /* Lists */
+        ul {
+            margin: 0 0 0 0;
+            padding-left: 2px;
+            list-style: none;
+        }
+        
+        ul li {
+            position: relative;
+            padding-left: 16px;
+            margin-bottom: 8px;
+            color: #334155;
+            font-size: 0.85em;
+            line-height: 1.5;
+        }
+        
+        ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #3b82f6;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        
+        /* Skills grid */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: space-between;
+            align-items: stretch;
+            text-align: center;
+        }
+        
+        .skill-tag {
+            flex: 0 1 auto; /* Allow shrinking but not growing */
+            width: auto;
+            min-width: 30px;
+            font-size: 0.58em;
+            padding: 4px 6px;
+            margin: 0 0 2px 0;
+            border-radius: 4px;
+            background: rgba(241, 245, 249, 0.7);
+            color: #3b82f6 !important;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            white-space: normal;
+            overflow: visible;
+            line-height: 1.3;
+            min-height: 20px;
+            box-sizing: border-box;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            word-break: normal;
+            max-width: none; /* Remove all max-width constraints */
+        }
+        
+        .skill-tag:hover {
+            background: #3b82f6;
+            color: white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+        }
+        
+        .skill-tag.xs {
+            width: calc(20% - 4px);
+        }
+        
+        .skill-tag.sm {
+            width: calc(33% - 4px);
+        }
+        
+        .skill-tag.md {
+            width: calc(50% - 4px);
+        }
+        
+        .skill-tag.lg {
+            width: 100%;
+        }
+        
+        .skill-tag[data-skill="Microsoft SQL Server"] {
+            width: 100% !important;
+        }
+        
+        .skills-grid::after {
+            content: "";
+            flex: auto;
+        }
+        
+        /* Right column styles */
+        .side-column .section {
+            padding: 16px 14px;
+            margin-bottom: 20px;
+        }
+        
+        .side-column .section-title {
+            font-size: 0.95em;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+        }
+        
+        .side-column .education-item, 
+        .side-column .award-item {
+            padding: 10px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+        }
+        
+        .side-column .education-item h3, 
+        .side-column .award-item h3 {
+            font-size: 0.8em;
+            margin: 0 0 6px;
+        }
+        
+        .side-column .school {
+            font-size: 0.7em;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+        
+        .side-column .education-details {
+            padding: 6px 8px;
+            margin-bottom: 8px;
+            font-size: 0.65em;
+        }
+        
+        .side-column .education-details span {
+            gap: 4px;
+        }
+        
+        .side-column .award-item p {
+            font-size: 0.7em;
+            line-height: 1.3;
+            margin-bottom: 0;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .resume {
+                padding: 24px 15px;
+                margin: 20px auto;
+                border-radius: 16px;
+            }
+            
+            .resume-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .name {
+                font-size: 1.8em;
+            }
+            
+            .title {
+                font-size: 1.1em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 8px;
+                padding: 12px 8px;
+            }
+            
+            .company-info, .education-details {
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start;
+                padding: 8px 10px;
+            }
+            
+            .section {
+                padding: 16px;
+                margin-bottom: 20px;
+            }
+            
+            .skills-grid {
+                gap: 4px;
+            }
+            
+            .skill-tag {
+                font-size: 0.55em;
+                padding: 3px 5px;
+                min-height: 18px;
+            }
+            
+            .skill-tag.xs {
+                width: calc(33% - 3px);
+            }
+            
+            .skill-tag.sm, .skill-tag.md {
+                width: calc(50% - 4px);
+            }
+        }
+        
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            
+            body::before {
+                display: none;
+            }
+            
+            .resume {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                margin: 0;
+                max-width: 100%;
+            }
+            
+            .experience-item, .education-item, .award-item,
+            .section {
+                break-inside: avoid;
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #eee;
+            }
+            
+            .skill-tag:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="resume">
+        <div class="resume-header">
+            <h1 class="name">AVINASH KUMAR</h1>
+            <h2 class="title">Senior Software Engineer</h2>
+            <div class="contact-info">
+                <span class="contact-item"><i class="fas fa-phone"></i> +91 8092014650</span>
+                <span class="contact-item"><i class="fas fa-envelope"></i> avinashkumar3013@gmail.com</span>
+                <a href="https://www.linkedin.com/in/avina5hkr/" target="_blank" class="contact-item"><i class="fab fa-linkedin"></i> linkedin.com/in/avina5hkr</a>
+                <a href="https://github.com/avina5hkr" target="_blank" class="contact-item"><i class="fab fa-github"></i> github.com/avina5hkr</a>
+                <span class="contact-item"><i class="fas fa-map-marker-alt"></i> Gurgaon</span>
+            </div>
+        </div>
+
+        <div class="resume-grid">
+            <div class="main-column">
+                <div class="section">
+                    <h2 class="section-title">SUMMARY</h2>
+                    <p>Senior Software Engineer with extensive experience in developing scalable microservices, payment systems, and cloud infrastructure. Proven track record in leading technical initiatives, mentoring team members, and delivering high-impact solutions across various domains.</p>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">EXPERIENCE</h2>
+                    
+                    <div class="experience-item">
+                        <h3>Senior Software Engineer</h3>
+                        <div class="company-info">
+                            <span class="company">Practice by Numbers</span>
+                            <div class="duration-location">
+                                <span><i class="far fa-calendar"></i> 02/2023 - Present</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Gurgaon</span>
+                            </div>
+                        </div>
+                        <p class="job-description">SaaS solutions for optimizing dental practice operations</p>
+                        <ul>
+                            <li>Designed and implemented a scalable Payment microservice supporting multiple payment providers (Adyen and Stripe) with features for customer onboarding, charging, card management, and payout processing including ECOM and POS - currently handling $5M+ monthly transactions across 200+ practices</li>
+                            <li>Implemented database sharding and replication to enable efficient data distribution across multiple database instances</li>
+                            <li>Led the decoupling of Redis and other services from monolithic architecture to create a distributed system</li>
+                            <li>Integrated third-party services including Hubspot and Vitally to enhance application functionality and management visibility</li>
+                            <li>Managing 15+ AWS infrastructure including EC2, ECS, RDS, SQS, etc.</li>
+                            <li>Designing multiple deployment environments with dedicated deployment servers to streamline workflows and enhance testing efficiency</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3>Software Engineer</h3>
+                        <div class="company-info">
+                            <span class="company">Skit.ai</span>
+                            <div class="duration-location">
+                                <span><i class="far fa-calendar"></i> 08/2022 - 01/2023</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Bangalore</span>
+                            </div>
+                        </div>
+                        <p class="job-description">SaaS provider of voice AI solutions for automated customer interactions</p>
+                        <ul>
+                            <li>Enhanced and optimized a high-performance Django WSGI application handling millions of daily connections between voice and client services</li>
+                            <li>Contributed to training and testing of proprietary ML-based SLU models using diverse user datasets</li>
+                            <li>Developed and maintained Python scripts for automating client-specific daily operations</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3>Software Engineer</h3>
+                        <div class="company-info">
+                            <span class="company">Orange Business Services</span>
+                            <div class="duration-location">
+                                <span><i class="far fa-calendar"></i> 09/2020 - 08/2022</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Gurgaon</span>
+                            </div>
+                        </div>
+                        <p class="job-description">A global IT and telecommunications integrator offering cloud, IoT, AI, and network solutions</p>
+                        <ul>
+                            <li>Developed a Django WSGI application for spend and subscription management with MSSQL database, implementing GitLab CI/CD pipeline for OpenShift deployment</li>
+                            <li>Built multiple Azure function apps in Python for IoT sensor middleware, managing historical data, live data, sensor configurations, and alarm systems</li>
+                            <li>Created a command-line log parsing tool that saved approximately 300+ hours per month for L2 support engineers</li>
+                            <li>Implemented a real-time Buzzer Application using Django ASGI, Channels, and WebSocket</li>
+                            <li>Developed text recognition and language conversion tools using Tesseract OCR and Google Trans library</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="side-column">
+                <div class="section">
+                    <h2 class="section-title">EDUCATION</h2>
+                    <div class="education-item">
+                        <h3>M. Tech</h3>
+                        <div class="school">Malaviya National Institute of Technology (MNIT)</div>
+                        <div class="education-details">
+                            <span><i class="far fa-calendar"></i> 07/2018 - 06/2020</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Jaipur</span>
+                        </div>
+                    </div>
+
+                    <div class="education-item">
+                        <h3>B. Tech</h3>
+                        <div class="school">University College of Engineering and Technology (UCET), VBU</div>
+                        <div class="education-details">
+                            <span><i class="far fa-calendar"></i> 07/2013 - 06/2017</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Hazaribagh</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">AWARDS</h2>
+                    <div class="award-item">
+                        <h3>Inspirational Mentor Award</h3>
+                        <p>For mentoring and actively helping other developers and QA team members at Practice by Numbers</p>
+                    </div>
+                    <div class="award-item">
+                        <h3>Team Excellence Award</h3>
+                        <p>Best performing team for successful design, development, and production release of ECOM and POS payments at Practice by Numbers</p>
+                    </div>
+                    <div class="award-item">
+                        <h3>Above & Beyond Award</h3>
+                        <p>Recognized for exceptional contribution to the software incubation team at Orange Business Services</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">SKILLS</h2>
+                    <div class="skills-grid">
+                        <span class="skill-tag xs">AWS</span>
+                        <span class="skill-tag xs">EC2</span>
+                        <span class="skill-tag xs">S3</span>
+                        <span class="skill-tag xs">SQS</span>
+                        <span class="skill-tag xs">RDS</span>
+                        <span class="skill-tag sm">Python</span>
+                        <span class="skill-tag sm">Django</span>
+                        <span class="skill-tag sm">Celery</span>
+                        <span class="skill-tag sm">Git</span>
+                        <span class="skill-tag sm">SQL</span>
+                        <span class="skill-tag sm">Java</span>
+                        <span class="skill-tag sm">Redis</span>
+                        <span class="skill-tag sm">Docker</span>
+                        <span class="skill-tag sm">H2O</span>
+                        <span class="skill-tag sm">IoT</span>
+                        <span class="skill-tag md">JavaScript</span>
+                        <span class="skill-tag md">SpringBoot</span>
+                        <span class="skill-tag md">GitLab CI</span>
+                        <span class="skill-tag md">Bitbucket</span>
+                        <span class="skill-tag md">Postgres</span>
+                        <span class="skill-tag md">ECS</span>
+                        <span class="skill-tag md">Route 53</span>
+                        <span class="skill-tag md">API Gateway</span>
+                        <span class="skill-tag md">AWS Lambda</span>
+                        <span class="skill-tag md">Azure</span>
+                        <span class="skill-tag md">Azure Functions</span>
+                        <span class="skill-tag lg" data-skill="Microsoft SQL Server">Microsoft SQL Server</span>
+                        <span class="skill-tag md">Scikit-Learn</span>
+                        <span class="skill-tag md">Middleware</span>
+                        <span class="skill-tag md">Microservices</span>
+                        <span class="skill-tag md">Java Spring</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html> 
