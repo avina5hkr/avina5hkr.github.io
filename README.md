@@ -24,8 +24,7 @@ avina5hkr.github.io/
 └── assets/
     ├── favicon.svg
     ├── apple-touch-icon.png
-    ├── system-map.svg
-    ├── og-card.svg
+    ├── og-card.svg        Editable source for og-card.png
     ├── og-card.png
     └── Avinash_Kumar_Resume.pdf
 ```

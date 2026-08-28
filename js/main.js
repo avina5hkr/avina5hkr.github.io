@@ -69,12 +69,24 @@
         closeMenu(true);
       }
     });
+
+    // Crossing into the desktop navigation breakpoint resets the panel, so it
+    // cannot reappear already open when the viewport narrows again.
+    var desktopNavigation = window.matchMedia('(min-width: 860px)');
+    desktopNavigation.addEventListener('change', function (event) {
+      if (event.matches) closeMenu(false);
+    });
   }
 
-  // Only now that the menu is wired do we let CSS collapse the fallback navigation
-  // and reveal the JS-only controls. If this file never runs, `no-js` styling keeps
-  // the navigation open and usable and hides the inert toggles.
-  root.classList.replace('no-js', 'js');
+  // Signals to the inline head guard that the menu is wired. Without this the
+  // guard adds `js-failed` at DOMContentLoaded and restores the open fallback nav.
+  root.classList.add('nav-ready');
+
+  // Enable menu transitions only after the collapsed state has been painted,
+  // so the initial collapse is instant and contributes no layout shift.
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () { root.classList.add('nav-animated'); });
+  });
 
   // Sticky header background after scroll
   var header = document.querySelector('.site-header');

@@ -203,8 +203,8 @@ h2 {
   color: var(--text);
   border: 1px solid var(--border);
   border-radius: 10px;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -238,19 +238,21 @@ h2 {
   .site-nav ~ .header-actions { margin-inline-start: 0; }
 }
 
-.header-resume {
+/* Qualified with .btn so these win over the later `.btn { display: inline-flex }`
+   rule; otherwise the control shows on small screens and crowds the header. */
+.btn.header-resume {
   display: none;
 }
 
 @media (min-width: 640px) {
-  .header-resume { display: inline-flex; }
+  .btn.header-resume { display: inline-flex; }
 }
 
 .theme-toggle, .menu-toggle {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  height: 40px;
+  height: 44px;
   padding-inline: 12px;
   border-radius: 10px;
   border: 1px solid var(--border);
@@ -270,7 +272,7 @@ h2 {
 :root[data-theme="light"] .icon-moon { display: block; }
 
 .menu-toggle {
-  width: 40px;
+  width: 44px;
   padding: 0;
   justify-content: center;
 }
@@ -302,12 +304,59 @@ h2 {
 .mobile-nav a:hover { background: var(--surface); }
 
 .no-js .mobile-nav { display: block; }
-.js .mobile-nav { display: none; }
-.js .mobile-nav.is-open { display: block; }
 
-/* Controls that only work with JavaScript: hidden until main.js confirms it ran */
+/* With JS the panel collapses via a grid row so it can animate. `visibility`
+   keeps the collapsed links out of the tab order and flips only at the end of
+   the closing transition. */
+.js .mobile-nav {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  translate: 0 -6px;
+  border-top-color: transparent;
+}
+/* Transitions are enabled only after the first paint (see main.js), so the
+   initial no-JS -> JS collapse happens instantly instead of animating and
+   registering a large layout shift. */
+.js.nav-animated .mobile-nav {
+  transition: grid-template-rows 200ms var(--ease), opacity 200ms var(--ease),
+    translate 200ms var(--ease), border-color 200ms var(--ease),
+    visibility 200ms var(--ease);
+}
+/* Block padding is collapsed too: with border-box sizing it would otherwise
+   keep the closed panel ~32px tall and leave a strip under the header. */
+.js .mobile-nav > ul {
+  overflow: hidden;
+  min-height: 0;
+  padding-block: 0;
+}
+.js.nav-animated .mobile-nav > ul { transition: padding-block 200ms var(--ease); }
+.js .mobile-nav.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+  translate: none;
+  border-top-color: var(--border);
+}
+.js .mobile-nav.is-open > ul { padding-block: 12px 20px; }
+
+/* main.js never ran: fall back to the always-open, scriptless navigation.
+   Declared after the `.js` rules so it wins on source order. */
+.js-failed .mobile-nav {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  translate: none;
+  border-top-color: var(--border);
+}
+.js-failed .mobile-nav > ul { padding-block: 12px 20px; }
+
+/* Controls that only work with JavaScript: hidden unless main.js confirms it ran */
 .no-js .menu-toggle,
-.no-js .theme-toggle { display: none; }
+.no-js .theme-toggle,
+.js-failed .menu-toggle,
+.js-failed .theme-toggle { display: none; }
 
 @media (min-width: 860px) {
   .mobile-nav { display: none !important; }
@@ -347,12 +396,18 @@ h2 {
 .btn-ghost:hover { color: var(--text); }
 
 .btn-small {
-  min-height: 40px;
+  min-height: 44px;
   padding: 0 16px;
   font-size: 0.875rem;
 }
 
 .btn .icon { width: 16px; height: 16px; }
+
+/* The transform transition above is only paid off on real pointers */
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover { transform: translateY(-1px); }
+  .btn:active { transform: translateY(0); }
+}
 
 /* Hero */
 .hero {
@@ -376,9 +431,9 @@ h2 {
   }
   .hero-visual {
     width: 100%;
-    max-width: 820px;
+    max-width: 740px;
     justify-self: center;
-    margin-top: 16px;
+    margin-top: 8px;
   }
 }
 
@@ -399,6 +454,19 @@ h2 {
     justify-self: end;
     align-self: center;
     margin-top: 0;
+  }
+}
+
+/* Large desktops: buy the diagram more width from the column split and gap
+   rather than from a wider hero container, so the hero copy stays flush with
+   every section heading below it. */
+@media (min-width: 1280px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: 44px;
+  }
+  .hero-visual {
+    max-width: 800px;
   }
 }
 
@@ -526,8 +594,10 @@ h2 {
 /* Storage traffic: a request particle out, a data/ack particle back.
    Both directions ride the same connector path; only the particles move. */
 .data-flow-particle {
+  opacity: 0;
   offset-distance: 0%;
   animation: data-flow 4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  animation-fill-mode: both;
 }
 .data-flow-particle.is-return { animation-name: data-flow-return; }
 .data-flow-particle.is-db { fill: var(--primary); }
@@ -628,6 +698,15 @@ h2 {
   .case-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* Two columns but three cards: centre the orphaned third card */
+@media (min-width: 720px) and (max-width: 1179px) {
+  .case-card:last-child {
+    grid-column: 1 / -1;
+    width: calc(50% - 12px);
+    justify-self: center;
+  }
+}
+
 @media (min-width: 1180px) {
   .case-grid { grid-template-columns: repeat(3, 1fr); }
 }
@@ -642,7 +721,7 @@ h2 {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition: border-color 220ms var(--ease), transform 220ms var(--ease), box-shadow 220ms var(--ease);
+  transition: border-color 200ms var(--ease), transform 200ms var(--ease), box-shadow 200ms var(--ease);
 }
 
 .case-card::before {
@@ -656,10 +735,14 @@ h2 {
   opacity: 0.7;
 }
 
-.case-card:hover {
-  border-color: var(--primary);
-  transform: translateY(-4px);
-  box-shadow: 0 24px 48px -28px var(--shadow);
+/* Hover treatment only where there is a real pointer, so touch devices never
+   get stuck in a lifted state after a tap. */
+@media (hover: hover) and (pointer: fine) {
+  .case-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px -28px var(--shadow);
+  }
 }
 
 .case-card-head {
@@ -1006,15 +1089,24 @@ h2 {
 }
 .footer-links a:hover { color: var(--text); }
 
-/* Reveal-on-scroll: only engages once JS confirms readiness */
+/* Reveal-on-scroll: only engages once JS confirms readiness.
+   Uses the independent `translate` property so reveal movement never competes
+   with `transform` based hover states (e.g. the case cards). */
 .js.reveal-ready [data-reveal] {
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 500ms var(--ease), transform 500ms var(--ease);
+  translate: 0 16px;
+  transition: opacity 500ms var(--ease), translate 500ms var(--ease);
 }
 .js.reveal-ready [data-reveal].is-visible {
   opacity: 1;
-  transform: none;
+  translate: none;
+}
+
+/* Cards reveal on `translate` but keep their own faster hover transitions */
+.js.reveal-ready .case-card[data-reveal] {
+  transition: opacity 500ms var(--ease), translate 500ms var(--ease),
+    border-color 200ms var(--ease), transform 200ms var(--ease),
+    box-shadow 200ms var(--ease);
 }
 
 /* 404 page */
@@ -1037,8 +1129,14 @@ h2 {
   }
   .js.reveal-ready [data-reveal] {
     opacity: 1;
+    translate: none;
     transform: none;
   }
+  /* No decorative movement on hover either */
+  .case-card:hover,
+  .btn:hover,
+  .btn:active { transform: none; }
+  .js .mobile-nav { translate: none; }
   .arch-dot { animation: none; opacity: 0; }
   .data-flow-particle,
   .data-flow-particle.is-return { animation: none; opacity: 0; }

@@ -5,6 +5,7 @@
 <script>
 (function(){
   try {
+    document.documentElement.classList.replace('no-js', 'js');
     var stored = localStorage.getItem('theme');
     var theme = stored === 'light' || stored === 'dark' ? stored : null;
     if (!theme) {
@@ -12,11 +13,17 @@
     }
     document.documentElement.setAttribute('data-theme', theme);
   } catch (e) {}
+  // If main.js never runs (blocked, failed, parse error) restore the scriptless
+  // navigation fallback so the menu stays reachable.
+  document.addEventListener('DOMContentLoaded', function () {
+    var r = document.documentElement;
+    if (!r.classList.contains('nav-ready')) r.classList.add('js-failed');
+  });
 })();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Avinash Kumar | Lead Software Engineer — Distributed Systems &amp; Payments</title>
-<meta name="description" content="Lead Software Engineer building distributed backend systems, payment infrastructure, and cloud-native platforms with Python, Django, PostgreSQL, Redis, and AWS.">
+<title>Avinash Kumar | Lead Software Engineer — Backend &amp; Distributed Systems</title>
+<meta name="description" content="Lead Software Engineer building backend platforms and distributed systems, with deep experience in payment infrastructure, using Python, Django, Redis and AWS.">
 <link rel="canonical" href="https://avina5hkr.github.io/">
 
 <meta name="theme-color" content="#07111f" media="(prefers-color-scheme: dark)">
@@ -26,15 +33,15 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Avinash Kumar | Lead Software Engineer — Distributed Systems &amp; Payments">
-<meta property="og:description" content="Lead Software Engineer building distributed backend systems, payment infrastructure, and cloud-native platforms with Python, Django, PostgreSQL, Redis, and AWS.">
+<meta property="og:title" content="Avinash Kumar | Lead Software Engineer — Backend &amp; Distributed Systems">
+<meta property="og:description" content="Lead Software Engineer building backend platforms and distributed systems, with deep experience in payment infrastructure, using Python, Django, Redis and AWS.">
 <meta property="og:url" content="https://avina5hkr.github.io/">
 <meta property="og:image" content="https://avina5hkr.github.io/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Avinash Kumar | Lead Software Engineer — Distributed Systems &amp; Payments">
-<meta name="twitter:description" content="Lead Software Engineer building distributed backend systems, payment infrastructure, and cloud-native platforms with Python, Django, PostgreSQL, Redis, and AWS.">
+<meta name="twitter:title" content="Avinash Kumar | Lead Software Engineer — Backend &amp; Distributed Systems">
+<meta name="twitter:description" content="Lead Software Engineer building backend platforms and distributed systems, with deep experience in payment infrastructure, using Python, Django, Redis and AWS.">
 <meta name="twitter:image" content="https://avina5hkr.github.io/assets/og-card.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -90,8 +97,8 @@
 
     <nav class="site-nav" aria-label="Primary">
       <ul>
-        <li><a href="#about">About</a></li>
         <li><a href="#impact">Impact</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#work">Work</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#stack">Stack</a></li>
@@ -121,8 +128,8 @@
 
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
     <ul>
-      <li><a href="#about">About</a></li>
       <li><a href="#impact">Impact</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#work">Work</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#stack">Stack</a></li>
