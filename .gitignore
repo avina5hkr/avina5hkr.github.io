@@ -1,0 +1,12 @@
+# Local working notes / specs — not part of the published site
+
+
+# OS and editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Local audit output
+lighthouse-report.json

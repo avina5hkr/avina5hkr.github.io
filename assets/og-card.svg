@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <title>Avinash Kumar — Lead Software Engineer</title>
+  <defs>
+    <linearGradient id="og-bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#07111f"/>
+      <stop offset="1" stop-color="#0d1b2a"/>
+    </linearGradient>
+    <linearGradient id="og-accent" x1="60" y1="0" x2="1140" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4f9cff"/>
+      <stop offset="1" stop-color="#38bdf8"/>
+    </linearGradient>
+    <radialGradient id="og-glow" cx="0.82" cy="0.18" r="0.65">
+      <stop offset="0" stop-color="#1c3b5e" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#1c3b5e" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#og-bg)"/>
+  <rect width="1200" height="630" fill="url(#og-glow)"/>
+
+  <g fill="none" stroke="#4f9cff" stroke-opacity="0.28" stroke-width="1.5">
+    <path d="M760 60 C 900 140 1000 220 1080 340"/>
+    <path d="M820 40 C 950 90 1080 180 1140 300"/>
+  </g>
+  <circle cx="1080" cy="340" r="4" fill="#38bdf8" fill-opacity="0.6"/>
+  <circle cx="1140" cy="300" r="3" fill="#4f9cff" fill-opacity="0.6"/>
+
+  <rect x="80" y="80" width="56" height="6" rx="3" fill="url(#og-accent)"/>
+
+  <text x="80" y="230" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="72" font-weight="700" fill="#f8fafc">Avinash Kumar</text>
+  <text x="80" y="290" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="34" font-weight="600" fill="#4f9cff">Lead Software Engineer</text>
+
+  <text x="80" y="345" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="22" fill="#a9b8c8">Distributed Systems · Payments · Cloud-Native Backend</text>
+
+  <g font-family="'JetBrains Mono', 'Courier New', monospace" font-size="20" fill="#f8fafc">
+    <circle cx="90" cy="470" r="3" fill="#38bdf8"/>
+    <text x="106" y="476">6+ yrs backend</text>
+
+    <circle cx="330" cy="470" r="3" fill="#38bdf8"/>
+    <text x="346" y="476">$50M+ monthly volume</text>
+
+    <circle cx="660" cy="470" r="3" fill="#38bdf8"/>
+    <text x="676" y="476">7-engineer team</text>
+
+    <circle cx="900" cy="470" r="3" fill="#38bdf8"/>
+    <text x="916" y="476">2M+ daily requests</text>
+  </g>
+
+  <line x1="80" y1="530" x2="1120" y2="530" stroke="#a9b8c8" stroke-opacity="0.18"/>
+  <text x="80" y="575" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="20" fill="#a9b8c8">avina5hkr.github.io</text>
+</svg>

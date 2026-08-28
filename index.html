@@ -1,681 +1,607 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avinash Kumar - Senior Software Engineer</title>
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        /* Base styles and reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            background: linear-gradient(120deg, #e0e7ff 0%, #f0fdfa 100%);
-            font-family: 'Inter', -apple-system, system-ui, sans-serif;
-            color: #334155;
-            line-height: 1.6;
-            position: relative;
-            overflow-x: hidden;
-            padding: 20px;
-            min-height: 100vh;
-        }
-        
-        body::before {
-            content: '';
-            position: fixed;
-            top: -100px; left: -100px; right: -100px; bottom: -100px;
-            z-index: 0;
-            background: radial-gradient(circle at 20% 30%, rgba(96, 165, 250, 0.33) 0%, transparent 60%),
-                radial-gradient(circle at 80% 70%, rgba(167, 243, 208, 0.33) 0%, transparent 60%);
-            pointer-events: none;
-            animation: bgMove 18s linear infinite alternate;
-        }
-        
-        @keyframes bgMove {
-            0% { background-position: 0% 0%, 100% 100%, 0 0; }
-            100% { background-position: 100% 100%, 0% 0%, 0 0; }
-        }
-        
-        .resume {
-            max-width: 950px;
-            margin: 60px auto;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.85);
-            box-shadow: 0 8px 40px rgba(37, 99, 235, 0.18);
-            border-radius: 24px;
-            position: relative;
-            z-index: 1;
-            border: 1px solid rgba(59, 130, 246, 0.13);
-            backdrop-filter: blur(16px);
-            animation: fadeInUp 0.8s ease-out;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Header styles */
-        .resume-header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 22px;
-            border-bottom: 1px solid #e2e8f0;
-            position: relative;
-        }
-        
-        .resume-header::before {
-            content: '';
-            position: absolute;
-            top: -60px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 120px;
-            background: #3b82f6;
-            border-radius: 60%;
-            opacity: 0.1;
-            z-index: -1;
-        }
-        
-        .name {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.4em;
-            font-weight: 800;
-            color: #2563eb !important;
-            margin: 0 0 6px;
-            text-transform: uppercase;
-            background: linear-gradient(45deg, #2563eb 30%, #3b82f6 70%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent !important;
-            text-shadow: 0 1px 1px rgba(37, 99, 235, 0.1);
-            letter-spacing: 0.5px;
-        }
-        
-        .title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.3em;
-            color: #3b82f6 !important;
-            font-weight: 500;
-            margin: 0 0 20px;
-            letter-spacing: 0.3px;
-        }
-        
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 22px;
-            background: rgba(241, 245, 249, 0.5);
-            padding: 12px 16px;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #475569 !important;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 0.85em;
-            text-decoration: none;
-        }
-        
-        a.contact-item {
-            color: #3b82f6 !important;
-        }
-        
-        .contact-item:hover {
-            background: rgba(59, 130, 246, 0.15);
-            transform: translateY(-2px);
-            text-decoration: none;
-            color: #2563eb !important;
-        }
-        
-        .contact-item i {
-            color: #3b82f6 !important;
-            font-size: 1.1em;
-        }
-        
-        .contact-item i.fab {
-            font-size: 1.2em;
-        }
-        
-        /* Grid layout */
-        .resume-grid {
-            display: grid;
-            grid-template-columns: 3fr 1fr;
-            gap: 32px;
-        }
-        
-        /* Section styles */
-        .section {
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 28px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            backdrop-filter: blur(10px);
-            opacity: 0;
-            animation: sectionFadeIn 0.7s ease-out forwards;
-        }
-        
-        .section:nth-child(1) { animation-delay: 0.1s; }
-        .section:nth-child(2) { animation-delay: 0.2s; }
-        .section:nth-child(3) { animation-delay: 0.3s; }
-        .section:nth-child(4) { animation-delay: 0.4s; }
-        
-        @keyframes sectionFadeIn {
-            0% { opacity: 0; transform: translateY(20px) scale(0.98); }
-            100% { opacity: 1; transform: none; }
-        }
-        
-        .section-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.25em;
-            font-weight: 700;
-            color: #2563eb !important;
-            letter-spacing: 1.3px;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #e2e8f0;
-            position: relative;
-            text-transform: uppercase;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 45px;
-            height: 1px;
-            background: #3b82f6;
-        }
-        
-        .section p {
-            font-size: 0.9em;
-            line-height: 1.6;
-            color: #475569;
-            margin-bottom: 16px;
-        }
-        
-        /* Experience items */
-        .experience-item, .education-item, .award-item {
-            padding: 16px;
-            margin-bottom: 20px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
-            transition: all 0.3s ease;
-            border: 1px solid #f1f5f9;
-        }
-        
-        .experience-item:hover, .education-item:hover, .award-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.12);
-            border-color: rgba(59, 130, 246, 0.2);
-        }
-        
-        .experience-item h3, .education-item h3, .award-item h3 {
-            color: #2563eb !important;
-            font-size: 1.05em;
-            font-weight: 600;
-            margin: 0 0 8px;
-            letter-spacing: 0.2px;
-        }
-        
-        .company, .school {
-            color: #3b82f6 !important;
-            font-weight: 600;
-            font-size: 0.95em;
-            margin-bottom: 8px;
-            letter-spacing: 0.2px;
-        }
-        
-        .job-description {
-            color: #64748b;
-            font-style: italic;
-            margin-bottom: 12px;
-            font-size: 0.85em;
-            line-height: 1.5;
-        }
-        
-        .company-info, .education-details {
-            background: rgba(241, 245, 249, 0.6);
-            padding: 10px 12px;
-            border-radius: 8px;
-            margin-bottom: 12px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .duration-location {
-            display: flex;
-            gap: 16px;
-            color: #64748b;
-            font-size: 0.75em;
-        }
-        
-        .duration-location span, .education-details span {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        
-        /* Lists */
-        ul {
-            margin: 0 0 0 0;
-            padding-left: 2px;
-            list-style: none;
-        }
-        
-        ul li {
-            position: relative;
-            padding-left: 16px;
-            margin-bottom: 8px;
-            color: #334155;
-            font-size: 0.85em;
-            line-height: 1.5;
-        }
-        
-        ul li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: #3b82f6;
-            font-size: 1.1em;
-            font-weight: bold;
-        }
-        
-        /* Skills grid */
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            justify-content: space-between;
-            align-items: stretch;
-            text-align: center;
-        }
-        
-        .skill-tag {
-            flex: 0 1 auto; /* Allow shrinking but not growing */
-            width: auto;
-            min-width: 30px;
-            font-size: 0.58em;
-            padding: 4px 6px;
-            margin: 0 0 2px 0;
-            border-radius: 4px;
-            background: rgba(241, 245, 249, 0.7);
-            color: #3b82f6 !important;
-            text-align: center;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-            white-space: normal;
-            overflow: visible;
-            line-height: 1.3;
-            min-height: 20px;
-            box-sizing: border-box;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            word-break: normal;
-            max-width: none; /* Remove all max-width constraints */
-        }
-        
-        .skill-tag:hover {
-            background: #3b82f6;
-            color: white !important;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
-        }
-        
-        .skill-tag.xs {
-            width: calc(20% - 4px);
-        }
-        
-        .skill-tag.sm {
-            width: calc(33% - 4px);
-        }
-        
-        .skill-tag.md {
-            width: calc(50% - 4px);
-        }
-        
-        .skill-tag.lg {
-            width: 100%;
-        }
-        
-        .skill-tag[data-skill="Microsoft SQL Server"] {
-            width: 100% !important;
-        }
-        
-        .skills-grid::after {
-            content: "";
-            flex: auto;
-        }
-        
-        /* Right column styles */
-        .side-column .section {
-            padding: 16px 14px;
-            margin-bottom: 20px;
-        }
-        
-        .side-column .section-title {
-            font-size: 0.95em;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-            padding-bottom: 8px;
-        }
-        
-        .side-column .education-item, 
-        .side-column .award-item {
-            padding: 10px;
-            margin-bottom: 12px;
-            border-radius: 8px;
-        }
-        
-        .side-column .education-item h3, 
-        .side-column .award-item h3 {
-            font-size: 0.8em;
-            margin: 0 0 6px;
-        }
-        
-        .side-column .school {
-            font-size: 0.7em;
-            margin-bottom: 5px;
-            line-height: 1.3;
-        }
-        
-        .side-column .education-details {
-            padding: 6px 8px;
-            margin-bottom: 8px;
-            font-size: 0.65em;
-        }
-        
-        .side-column .education-details span {
-            gap: 4px;
-        }
-        
-        .side-column .award-item p {
-            font-size: 0.7em;
-            line-height: 1.3;
-            margin-bottom: 0;
-        }
-        
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .resume {
-                padding: 24px 15px;
-                margin: 20px auto;
-                border-radius: 16px;
-            }
-            
-            .resume-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .name {
-                font-size: 1.8em;
-            }
-            
-            .title {
-                font-size: 1.1em;
-            }
-            
-            .contact-info {
-                flex-direction: column;
-                gap: 8px;
-                padding: 12px 8px;
-            }
-            
-            .company-info, .education-details {
-                flex-direction: column;
-                gap: 8px;
-                align-items: flex-start;
-                padding: 8px 10px;
-            }
-            
-            .section {
-                padding: 16px;
-                margin-bottom: 20px;
-            }
-            
-            .skills-grid {
-                gap: 4px;
-            }
-            
-            .skill-tag {
-                font-size: 0.55em;
-                padding: 3px 5px;
-                min-height: 18px;
-            }
-            
-            .skill-tag.xs {
-                width: calc(33% - 3px);
-            }
-            
-            .skill-tag.sm, .skill-tag.md {
-                width: calc(50% - 4px);
-            }
-        }
-        
-        @media print {
-            body {
-                background: none;
-                padding: 0;
-            }
-            
-            body::before {
-                display: none;
-            }
-            
-            .resume {
-                box-shadow: none;
-                border: none;
-                padding: 0;
-                margin: 0;
-                max-width: 100%;
-            }
-            
-            .experience-item, .education-item, .award-item,
-            .section {
-                break-inside: avoid;
-                page-break-inside: avoid;
-                box-shadow: none;
-                border: 1px solid #eee;
-            }
-            
-            .skill-tag:hover {
-                transform: none;
-                box-shadow: none;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<script>
+(function(){
+  try {
+    var stored = localStorage.getItem('theme');
+    var theme = stored === 'light' || stored === 'dark' ? stored : null;
+    if (!theme) {
+      theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Avinash Kumar | Lead Software Engineer — Distributed Systems &amp; Payments</title>
+<meta name="description" content="Lead Software Engineer building distributed backend systems, payment infrastructure, and cloud-native platforms with Python, Django, PostgreSQL, Redis, and AWS.">
+<link rel="canonical" href="https://avina5hkr.github.io/">
+
+<meta name="theme-color" content="#07111f" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8fb" media="(prefers-color-scheme: light)">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Avinash Kumar | Lead Software Engineer — Distributed Systems &amp; Payments">
+<meta property="og:description" content="Lead Software Engineer building distributed backend systems, payment infrastructure, and cloud-native platforms with Python, Django, PostgreSQL, Redis, and AWS.">
+<meta property="og:url" content="https://avina5hkr.github.io/">
+<meta property="og:image" content="https://avina5hkr.github.io/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Avinash Kumar | Lead Software Engineer — Distributed Systems &amp; Payments">
+<meta name="twitter:description" content="Lead Software Engineer building distributed backend systems, payment infrastructure, and cloud-native platforms with Python, Django, PostgreSQL, Redis, and AWS.">
+<meta name="twitter:image" content="https://avina5hkr.github.io/assets/og-card.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap"></noscript>
+
+<link rel="stylesheet" href="css/styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Avinash Kumar",
+  "url": "https://avina5hkr.github.io/",
+  "jobTitle": "Lead Software Engineer",
+  "sameAs": [
+    "https://github.com/avina5hkr",
+    "https://www.linkedin.com/in/avina5hkr/"
+  ],
+  "knowsAbout": [
+    "Distributed systems",
+    "Payment infrastructure",
+    "Backend architecture",
+    "Python",
+    "Django",
+    "PostgreSQL",
+    "Redis",
+    "AWS",
+    "Cloud-native platforms",
+    "Applied and agentic AI"
+  ],
+  "alumniOf": [
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Malaviya National Institute of Technology, Jaipur"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "University College of Engineering and Technology, Hazaribagh"
+    }
+  ]
+}
+</script>
 </head>
 <body>
-    <section class="resume">
-        <div class="resume-header">
-            <h1 class="name">AVINASH KUMAR</h1>
-            <h2 class="title">Senior Software Engineer</h2>
-            <div class="contact-info">
-                <span class="contact-item"><i class="fas fa-phone"></i> +91 8092014650</span>
-                <span class="contact-item"><i class="fas fa-envelope"></i> avinashkumar3013@gmail.com</span>
-                <a href="https://www.linkedin.com/in/avina5hkr/" target="_blank" class="contact-item"><i class="fab fa-linkedin"></i> linkedin.com/in/avina5hkr</a>
-                <a href="https://github.com/avina5hkr" target="_blank" class="contact-item"><i class="fab fa-github"></i> github.com/avina5hkr</a>
-                <span class="contact-item"><i class="fas fa-map-marker-alt"></i> Gurgaon</span>
-            </div>
+<span id="top" class="sr-only"></span>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#top" aria-label="AK, back to top">AK</a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#impact">Impact</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-ghost btn-small header-resume" href="assets/Avinash_Kumar_Resume.pdf" download="Avinash_Kumar_Resume.pdf">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 3.5h9l4 4V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 3.5V8h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 11v6m0 0-2.4-2.4M12 17l2.4-2.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Resume</span>
+      </a>
+
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false">
+        <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        <span class="theme-toggle-label">Dark</span>
+      </button>
+
+      <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="mobile-nav">
+        <svg class="icon icon-menu" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <svg class="icon icon-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span class="sr-only">Menu</span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#impact">Impact</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="assets/Avinash_Kumar_Resume.pdf" download="Avinash_Kumar_Resume.pdf">Download resume</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="section-inner hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Lead Software Engineer · Backend &amp; Distributed Systems</p>
+        <h1>I build reliable distributed systems for products that operate at scale.</h1>
+        <p class="hero-summary">I’m Avinash Kumar, a Lead Software Engineer with 6+ years of experience designing backend platforms, high-volume transaction systems, event-driven workflows, and cloud-native services with Python, Django, PostgreSQL, Redis, and AWS.</p>
+
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#work">Explore my work</a>
+          <a class="btn btn-secondary" href="assets/Avinash_Kumar_Resume.pdf" download="Avinash_Kumar_Resume.pdf">Download resume</a>
         </div>
 
-        <div class="resume-grid">
-            <div class="main-column">
-                <div class="section">
-                    <h2 class="section-title">SUMMARY</h2>
-                    <p>Senior Software Engineer with extensive experience in developing scalable microservices, payment systems, and cloud infrastructure. Proven track record in leading technical initiatives, mentoring team members, and delivering high-impact solutions across various domains.</p>
-                </div>
+        <nav class="hero-social-nav" aria-label="Elsewhere">
+          <ul class="hero-social">
+            <li>
+              <a href="https://github.com/avina5hkr" target="_blank" rel="noopener noreferrer" aria-label="Avinash Kumar on GitHub">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/avina5hkr/" target="_blank" rel="noopener noreferrer" aria-label="Avinash Kumar on LinkedIn">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><text x="12" y="16.5" text-anchor="middle" font-size="9.5" font-weight="700" fill="currentColor" font-family="Inter, sans-serif">in</text></svg>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:avinashkumar3013@gmail.com" aria-label="Email Avinash Kumar">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m4 6.5 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
 
-                <div class="section">
-                    <h2 class="section-title">EXPERIENCE</h2>
-                    
-                    <div class="experience-item">
-                        <h3>Senior Software Engineer</h3>
-                        <div class="company-info">
-                            <span class="company">Practice by Numbers</span>
-                            <div class="duration-location">
-                                <span><i class="far fa-calendar"></i> 02/2023 - Present</span>
-                                <span><i class="fas fa-map-marker-alt"></i> Gurgaon</span>
-                            </div>
-                        </div>
-                        <p class="job-description">SaaS solutions for optimizing dental practice operations</p>
-                        <ul>
-                            <li>Designed and implemented a scalable Payment microservice supporting multiple payment providers (Adyen and Stripe) with features for customer onboarding, charging, card management, and payout processing including ECOM and POS - currently handling $5M+ monthly transactions across 200+ practices</li>
-                            <li>Implemented database sharding and replication to enable efficient data distribution across multiple database instances</li>
-                            <li>Led the decoupling of Redis and other services from monolithic architecture to create a distributed system</li>
-                            <li>Integrated third-party services including Hubspot and Vitally to enhance application functionality and management visibility</li>
-                            <li>Managing 15+ AWS infrastructure including EC2, ECS, RDS, SQS, etc.</li>
-                            <li>Designing multiple deployment environments with dedicated deployment servers to streamline workflows and enhance testing efficiency</li>
-                        </ul>
-                    </div>
+      <div class="hero-visual reveal" data-reveal>
+        <div class="topology-card">
+          <svg class="topology-svg" viewBox="0 0 840 520" aria-hidden="true" focusable="false">
+            <defs>
+              <pattern id="arch-grid" width="26" height="26" patternUnits="userSpaceOnUse">
+                <circle class="arch-grid-dot" cx="1.2" cy="1.2" r="1.2"/>
+              </pattern>
+              <radialGradient id="arch-glow" cx="0.5" cy="0.5" r="0.5">
+                <stop class="arch-glow-a" offset="0"/>
+                <stop class="arch-glow-b" offset="1"/>
+              </radialGradient>
+            </defs>
 
-                    <div class="experience-item">
-                        <h3>Software Engineer</h3>
-                        <div class="company-info">
-                            <span class="company">Skit.ai</span>
-                            <div class="duration-location">
-                                <span><i class="far fa-calendar"></i> 08/2022 - 01/2023</span>
-                                <span><i class="fas fa-map-marker-alt"></i> Bangalore</span>
-                            </div>
-                        </div>
-                        <p class="job-description">SaaS provider of voice AI solutions for automated customer interactions</p>
-                        <ul>
-                            <li>Enhanced and optimized a high-performance Django WSGI application handling millions of daily connections between voice and client services</li>
-                            <li>Contributed to training and testing of proprietary ML-based SLU models using diverse user datasets</li>
-                            <li>Developed and maintained Python scripts for automating client-specific daily operations</li>
-                        </ul>
-                    </div>
+            <rect class="arch-boundary" x="168" y="30" width="649" height="462" rx="24" fill="url(#arch-grid)"/>
 
-                    <div class="experience-item">
-                        <h3>Software Engineer</h3>
-                        <div class="company-info">
-                            <span class="company">Orange Business Services</span>
-                            <div class="duration-location">
-                                <span><i class="far fa-calendar"></i> 09/2020 - 08/2022</span>
-                                <span><i class="fas fa-map-marker-alt"></i> Gurgaon</span>
-                            </div>
-                        </div>
-                        <p class="job-description">A global IT and telecommunications integrator offering cloud, IoT, AI, and network solutions</p>
-                        <ul>
-                            <li>Developed a Django WSGI application for spend and subscription management with MSSQL database, implementing GitLab CI/CD pipeline for OpenShift deployment</li>
-                            <li>Built multiple Azure function apps in Python for IoT sensor middleware, managing historical data, live data, sensor configurations, and alarm systems</li>
-                            <li>Created a command-line log parsing tool that saved approximately 300+ hours per month for L2 support engineers</li>
-                            <li>Implemented a real-time Buzzer Application using Django ASGI, Channels, and WebSocket</li>
-                            <li>Developed text recognition and language conversion tools using Tesseract OCR and Google Trans library</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <ellipse cx="503" cy="226" rx="200" ry="175" fill="url(#arch-glow)"/>
 
-            <div class="side-column">
-                <div class="section">
-                    <h2 class="section-title">EDUCATION</h2>
-                    <div class="education-item">
-                        <h3>M. Tech</h3>
-                        <div class="school">Malaviya National Institute of Technology (MNIT)</div>
-                        <div class="education-details">
-                            <span><i class="far fa-calendar"></i> 07/2018 - 06/2020</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Jaipur</span>
-                        </div>
-                    </div>
+            <g fill="none" stroke-linecap="round">
+              <path class="arch-connector-sync" d="M138,226 L184,226" stroke-width="1.8"/>
+              <path class="arch-connector-sync" d="M349,226 L389,226" stroke-width="1.8"/>
+              <path class="arch-connector-sync" d="M420,368 C420,392 330,388 280,412" stroke-width="1.8"/>
+              <path class="arch-connector-sync" d="M490,368 C490,392 474,392 474,412" stroke-width="1.8"/>
+              <path class="arch-connector-async" d="M618,226 L658,226" stroke-width="1.8"/>
+              <path class="arch-connector-async" d="M730,273 C730,330 686,350 686,412" stroke-width="1.8"/>
+            </g>
 
-                    <div class="education-item">
-                        <h3>B. Tech</h3>
-                        <div class="school">University College of Engineering and Technology (UCET), VBU</div>
-                        <div class="education-details">
-                            <span><i class="far fa-calendar"></i> 07/2013 - 06/2017</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Hazaribagh</span>
-                        </div>
-                    </div>
-                </div>
+            <g class="arch-dot arch-dot-sync" style="offset-path: path('M138,226 L184,226 L349,226 L389,226'); animation-delay: 0s;"><circle r="4"/></g>
+            <g class="arch-dot arch-dot-async" style="offset-path: path('M618,226 L658,226 L730,226 L730,273 C730,330 686,350 686,412'); animation-delay: -2.5s;"><circle r="4"/></g>
 
-                <div class="section">
-                    <h2 class="section-title">AWARDS</h2>
-                    <div class="award-item">
-                        <h3>Inspirational Mentor Award</h3>
-                        <p>For mentoring and actively helping other developers and QA team members at Practice by Numbers</p>
-                    </div>
-                    <div class="award-item">
-                        <h3>Team Excellence Award</h3>
-                        <p>Best performing team for successful design, development, and production release of ECOM and POS payments at Practice by Numbers</p>
-                    </div>
-                    <div class="award-item">
-                        <h3>Above & Beyond Award</h3>
-                        <p>Recognized for exceptional contribution to the software incubation team at Orange Business Services</p>
-                    </div>
-                </div>
+            <!-- Backend Services ↔ PostgreSQL: query out, result back -->
+            <g class="data-flow-particle is-db" style="offset-path: path('M420,368 C420,392 330,388 280,412'); animation-delay: 0s;">
+              <circle class="dfp-halo" r="8.5"/><circle r="4.6"/>
+            </g>
+            <g class="data-flow-particle is-db is-return" style="offset-path: path('M420,368 C420,392 330,388 280,412'); animation-delay: 2s;">
+              <circle class="dfp-halo" r="8.5"/><circle r="4.6"/>
+            </g>
 
-                <div class="section">
-                    <h2 class="section-title">SKILLS</h2>
-                    <div class="skills-grid">
-                        <span class="skill-tag xs">AWS</span>
-                        <span class="skill-tag xs">EC2</span>
-                        <span class="skill-tag xs">S3</span>
-                        <span class="skill-tag xs">SQS</span>
-                        <span class="skill-tag xs">RDS</span>
-                        <span class="skill-tag sm">Python</span>
-                        <span class="skill-tag sm">Django</span>
-                        <span class="skill-tag sm">Celery</span>
-                        <span class="skill-tag sm">Git</span>
-                        <span class="skill-tag sm">SQL</span>
-                        <span class="skill-tag sm">Java</span>
-                        <span class="skill-tag sm">Redis</span>
-                        <span class="skill-tag sm">Docker</span>
-                        <span class="skill-tag sm">H2O</span>
-                        <span class="skill-tag sm">IoT</span>
-                        <span class="skill-tag md">JavaScript</span>
-                        <span class="skill-tag md">SpringBoot</span>
-                        <span class="skill-tag md">GitLab CI</span>
-                        <span class="skill-tag md">Bitbucket</span>
-                        <span class="skill-tag md">Postgres</span>
-                        <span class="skill-tag md">ECS</span>
-                        <span class="skill-tag md">Route 53</span>
-                        <span class="skill-tag md">API Gateway</span>
-                        <span class="skill-tag md">AWS Lambda</span>
-                        <span class="skill-tag md">Azure</span>
-                        <span class="skill-tag md">Azure Functions</span>
-                        <span class="skill-tag lg" data-skill="Microsoft SQL Server">Microsoft SQL Server</span>
-                        <span class="skill-tag md">Scikit-Learn</span>
-                        <span class="skill-tag md">Middleware</span>
-                        <span class="skill-tag md">Microservices</span>
-                        <span class="skill-tag md">Java Spring</span>
-                    </div>
-                </div>
-            </div>
+            <!-- Backend Services ↔ Redis: cache read/write out, value back -->
+            <g class="data-flow-particle is-cache" style="offset-path: path('M490,368 C490,392 474,392 474,412'); animation-delay: 0.5s;">
+              <circle class="dfp-halo" r="8.5"/><circle r="4.6"/>
+            </g>
+            <g class="data-flow-particle is-cache is-return" style="offset-path: path('M490,368 C490,392 474,392 474,412'); animation-delay: 2.5s;">
+              <circle class="dfp-halo" r="8.5"/><circle r="4.6"/>
+            </g>
+
+            <!-- Client — external, outside the platform boundary -->
+            <g transform="translate(20,198)">
+              <rect class="arch-node-external" width="118" height="56" rx="12"/>
+              <g class="arch-icon-muted" transform="translate(16,19)" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="14" rx="2"/>
+                <line x1="6" y1="18" x2="14" y2="18"/>
+                <line x1="10" y1="14" x2="10" y2="18"/>
+              </g>
+              <text class="arch-label-muted" x="44" y="36" font-size="22" font-weight="500">Client</text>
+            </g>
+
+            <!-- API Gateway -->
+            <g transform="translate(184,179)">
+              <rect class="arch-node-secondary is-sync" width="165" height="94" rx="14"/>
+              <g class="arch-icon-sync" transform="translate(71.5,20)" stroke-width="1.9" fill="none" stroke-linejoin="round">
+                <path d="M11,0 L22,4 V14.5 C22,21 16.5,25 11,26.5 C5.5,25 0,21 0,14.5 V4 Z"/>
+              </g>
+              <text class="arch-label" x="82.5" y="74" text-anchor="middle" font-size="22" font-weight="600">API Gateway</text>
+            </g>
+
+            <!-- Backend Services — four equal peer services -->
+            <g transform="translate(389,84)">
+              <rect class="arch-group" width="229" height="284" rx="16"/>
+              <text class="arch-group-header" x="114.5" y="34" text-anchor="middle" font-size="22" font-weight="700">Services</text>
+
+              <rect class="arch-pill" x="16" y="54" width="197" height="46" rx="10"/>
+              <text class="arch-pill-label" x="114.5" y="84" text-anchor="middle" font-size="21" font-weight="600">Payments</text>
+
+              <rect class="arch-pill" x="16" y="110" width="197" height="46" rx="10"/>
+              <text class="arch-pill-label" x="114.5" y="140" text-anchor="middle" font-size="21" font-weight="600">Workflows</text>
+
+              <rect class="arch-pill" x="16" y="166" width="197" height="46" rx="10"/>
+              <text class="arch-pill-label" x="114.5" y="196" text-anchor="middle" font-size="21" font-weight="600">Reporting</text>
+
+              <rect class="arch-pill" x="16" y="222" width="197" height="46" rx="10"/>
+              <text class="arch-pill-label" x="114.5" y="252" text-anchor="middle" font-size="21" font-weight="600">Notifications</text>
+            </g>
+
+            <!-- Event Bus -->
+            <g transform="translate(658,179)">
+              <rect class="arch-node-secondary is-async" width="143" height="94" rx="14"/>
+              <g class="arch-icon-async" transform="translate(59.5,24)" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="24" height="18" rx="2.5"/>
+                <path d="M0,3 L12,12.5 L24,3"/>
+              </g>
+              <text class="arch-label" x="71.5" y="74" text-anchor="middle" font-size="22" font-weight="600">Event Bus</text>
+            </g>
+
+            <!-- PostgreSQL -->
+            <g transform="translate(184,412)">
+              <rect class="arch-node-minor" width="192" height="62" rx="12"/>
+              <g class="arch-icon-sync" transform="translate(20,19)" stroke-width="1.7" fill="none">
+                <ellipse cx="10" cy="4" rx="10" ry="4"/>
+                <path d="M0,4 V19 C0,21.2 4.5,23 10,23 C15.5,23 20,21.2 20,19 V4"/>
+                <path d="M0,11.5 C0,13.7 4.5,15.5 10,15.5 C15.5,15.5 20,13.7 20,11.5"/>
+              </g>
+              <text class="arch-label" x="48" y="39" font-size="22" font-weight="600">PostgreSQL</text>
+            </g>
+
+            <!-- Redis -->
+            <g transform="translate(410,412)">
+              <rect class="arch-node-minor" width="128" height="62" rx="12"/>
+              <g class="arch-icon-sync" transform="translate(20,21)" stroke-width="1.7" fill="none">
+                <rect width="9" height="9" rx="1.6"/>
+                <rect x="11" width="9" height="9" rx="1.6"/>
+                <rect y="11" width="9" height="9" rx="1.6"/>
+                <rect x="11" y="11" width="9" height="9" rx="1.6"/>
+              </g>
+              <text class="arch-label" x="48" y="39" font-size="22" font-weight="600">Redis</text>
+            </g>
+
+            <!-- Async Workers -->
+            <g transform="translate(571,412)">
+              <rect class="arch-node-minor" width="230" height="62" rx="12"/>
+              <g class="arch-icon-async" transform="translate(31,31)" stroke-width="1.7" fill="none" stroke-linejoin="round">
+                <path d="M 7.34,-1.97 L 10.95,-1.05 L 10.95,1.05 L 7.34,1.97 L 5.37,5.37 L 6.39,8.96 L 4.56,10.01 L 1.97,7.34 L -1.97,7.34 L -4.56,10.01 L -6.39,8.96 L -5.37,5.37 L -7.34,1.97 L -10.95,1.05 L -10.95,-1.05 L -7.34,-1.97 L -5.37,-5.37 L -6.39,-8.96 L -4.56,-10.01 L -1.97,-7.34 L 1.97,-7.34 L 4.56,-10.01 L 6.39,-8.96 L 5.37,-5.37 Z"/>
+                <circle r="3.4"/>
+              </g>
+              <text class="arch-label" x="50" y="39" font-size="22" font-weight="600">Async Workers</text>
+            </g>
+          </svg>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="impact" id="impact">
+    <div class="section-inner">
+      <h2>Engineering impact</h2>
+      <dl class="impact-grid">
+        <div class="impact-item">
+          <dt>6+ years</dt>
+          <dd>Backend and platform engineering</dd>
+        </div>
+        <div class="impact-item">
+          <dt>$50M+ monthly</dt>
+          <dd>Payment transaction volume supported</dd>
+        </div>
+        <div class="impact-item">
+          <dt>7 engineers</dt>
+          <dd>Team leadership and mentoring</dd>
+        </div>
+        <div class="impact-item">
+          <dt>2M+ daily</dt>
+          <dd>Requests served by a high-throughput backend</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="about reveal" id="about" data-reveal>
+    <div class="section-inner about-grid">
+      <div class="about-copy">
+        <h2>Architecture grounded in ownership</h2>
+        <p>I design and operate backend systems where reliability, data consistency, and clear service boundaries matter. My experience spans payment workflows, asynchronous processing, database sharding, caching, cloud infrastructure, and production operations.</p>
+        <p>I work across the full engineering lifecycle—from translating business requirements into architecture, to implementation, deployment, observability, incident learning, and mentoring engineers. I prefer pragmatic designs that teams can understand, operate, and evolve confidently.</p>
+      </div>
+      <ul class="principles">
+        <li>
+          <h3>Design for failure</h3>
+          <p>Predictable recovery, idempotency, and safe retries.</p>
+        </li>
+        <li>
+          <h3>Make ownership explicit</h3>
+          <p>Clear service, data, and operational boundaries.</p>
+        </li>
+        <li>
+          <h3>Measure before optimizing</h3>
+          <p>Observable systems and evidence-based decisions.</p>
+        </li>
+        <li>
+          <h3>Raise the team</h3>
+          <p>Mentoring, review quality, and shared engineering standards.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="work" id="work">
+    <div class="section-inner">
+      <h2>Selected engineering work</h2>
+
+      <div class="case-grid">
+        <article class="case-card reveal" data-reveal>
+          <div class="case-card-head">
+            <p class="case-category">Payments · Distributed Systems · Technical Leadership</p>
+            <span class="case-index" aria-hidden="true">01</span>
+          </div>
+          <h3>Multi-rail payment infrastructure at SaaS scale</h3>
+          <p class="case-context">Unifying and scaling payment capabilities across a multi-module SaaS platform.</p>
+          <dl class="case-block">
+            <div class="case-stage">
+              <dt><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></svg>Challenge</dt>
+              <dd>Unify and scale payment capabilities across SaaS modules while supporting credit/debit cards, Pay by Bank (ACH), terminal/POS, and online payments.</dd>
+            </div>
+            <div class="case-stage">
+              <dt><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m15.5 8.5-2.2 5.8-5.8 2.2 2.2-5.8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Approach</dt>
+              <dd>Led a team of 7 engineers, defined microservice boundaries, designed asynchronous workflows, and owned delivery from architecture through production.</dd>
+            </div>
+            <div class="case-stage">
+              <dt><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 17 9.5 10.5 13.5 14.5 21 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h6v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Impact</dt>
+              <dd>Supported more than $50M in monthly transaction volume across the platform. Delivered installment-based payment plans using Celery Beat for reliable scheduled processing.</dd>
+            </div>
+          </dl>
+          <ul class="tech-list">
+            <li>Python</li><li>Django</li><li>Celery</li><li>PostgreSQL</li><li>Redis</li><li>AWS</li><li>SQS</li>
+          </ul>
+        </article>
+
+        <article class="case-card reveal" data-reveal>
+          <div class="case-card-head">
+            <p class="case-category">Data Architecture · Reliability · Cloud</p>
+            <span class="case-index" aria-hidden="true">02</span>
+          </div>
+          <h3>Scaling the data and delivery foundations</h3>
+          <p class="case-context">Sustaining transaction growth while reducing pressure on high-traffic paths.</p>
+          <dl class="case-block">
+            <div class="case-stage">
+              <dt><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></svg>Challenge</dt>
+              <dd>Sustain continued transaction growth and reduce pressure on high-traffic billing and reporting paths.</dd>
+            </div>
+            <div class="case-stage">
+              <dt><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m15.5 8.5-2.2 5.8-5.8 2.2 2.2-5.8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Approach</dt>
+              <dd>Implemented application-level PostgreSQL sharding, introduced Redis caching across multiple services, and maintained AWS development and production environments.</dd>
+            </div>
+            <div class="case-stage">
+              <dt><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 17 9.5 10.5 13.5 14.5 21 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h6v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Impact</dt>
+              <dd>Enabled horizontal data growth, improved operational resilience, and supported zero-downtime deployment practices.</dd>
+            </div>
+          </dl>
+          <ul class="tech-list">
+            <li>PostgreSQL</li><li>Redis</li><li>ECS</li><li>EC2</li><li>Lambda</li><li>RDS</li><li>ECR</li><li>API Gateway</li><li>Route 53</li>
+          </ul>
+        </article>
+
+        <article class="case-card reveal" data-reveal>
+          <div class="case-card-head">
+            <p class="case-category">Voice AI · Backend Performance · ML Collaboration</p>
+            <span class="case-index" aria-hidden="true">03</span>
+          </div>
+          <h3>Reliable integration for real-time voice automation</h3>
+          <p class="case-context">Keeping enterprise clients and real-time voice-AI services communicating dependably.</p>
+          <dl class="case-block">
+            <div class="case-stage">
+              <dt><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></svg>Challenge</dt>
+              <dd>Maintain dependable communication between enterprise clients and real-time voice-AI services.</dd>
+            </div>
+            <div class="case-stage">
+              <dt><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m15.5 8.5-2.2 5.8-5.8 2.2 2.2-5.8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Approach</dt>
+              <dd>Improved a high-throughput Django backend, stabilized integrations, and contributed to validation of proprietary SLU models.</dd>
+            </div>
+            <div class="case-stage">
+              <dt><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 17 9.5 10.5 13.5 14.5 21 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h6v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Impact</dt>
+              <dd>Worked on backend traffic exceeding 2M daily requests and datasets containing more than 100K labelled voice samples.</dd>
+            </div>
+          </dl>
+          <ul class="tech-list">
+            <li>Python</li><li>Django</li><li>REST APIs</li><li>ML/SLU validation</li>
+          </ul>
+        </article>
+      </div>
+
+      <p class="highlight-strip">Built a Python CLI log-analysis tool that saved approximately 400+ hours of manual effort per month for L2 support teams.</p>
+    </div>
+  </section>
+
+  <section class="experience" id="experience">
+    <div class="section-inner">
+      <h2>Experience</h2>
+      <ol class="timeline">
+        <li class="timeline-item reveal" data-reveal>
+          <div class="timeline-marker" aria-hidden="true"></div>
+          <div class="timeline-content">
+            <h3>Lead Software Engineer</h3>
+            <p class="timeline-meta">Practice by Numbers · February 2023–Present · Gurugram, India</p>
+            <p class="timeline-descriptor">US-based dental healthcare SaaS serving 3,000+ practices globally</p>
+            <ul class="role-progression">
+              <li><span class="role-title">Software Engineer</span><span class="role-dates">Feb 2023 – Jun 2024</span></li>
+              <li><span class="role-title">Senior Software Engineer</span><span class="role-dates">Jul 2024 – Jun 2026</span></li>
+              <li><span class="role-title">Lead Software Engineer</span><span class="role-dates">Jul 2026 – Present</span></li>
+            </ul>
+            <ul class="timeline-highlights">
+              <li>Led a 7-engineer team delivering distributed payment infrastructure supporting card, ACH, POS, and online payment experiences.</li>
+              <li>Redesigned payment creation to be decoupled from webhook ordering, making the pipeline idempotent and eliminating a class of race-condition and duplicate-payment failures.</li>
+              <li>Implemented application-level PostgreSQL sharding and introduced Redis caching across multiple services for continued platform growth.</li>
+              <li>Delivered installment-based payment plans using Celery Beat for reliable scheduled processing.</li>
+              <li>Provisioned and maintained AWS infrastructure (ECS, EC2, Lambda, RDS, API Gateway, Route 53, ECR) across development and production, enabling zero-downtime deployments.</li>
+              <li>Led Python, SQLAlchemy, and psycopg2 version upgrades with zero regressions, reducing Docker image size by 25%.</li>
+              <li>Hardened the public payment portal against bot traffic and strengthened fraud controls with AVS checks and configurable payment limits.</li>
+              <li>Mentored backend and QA engineers on distributed-system design, code-review standards, and cloud practices.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="timeline-item reveal" data-reveal>
+          <div class="timeline-marker" aria-hidden="true"></div>
+          <div class="timeline-content">
+            <h3>Software Engineer</h3>
+            <p class="timeline-meta">Skit.ai · August 2022–January 2023 · Bengaluru, India</p>
+            <p class="timeline-descriptor">Voice-AI SaaS for automated enterprise customer interactions</p>
+            <ul class="timeline-highlights">
+              <li>Improved reliability and integrations for a Django backend serving more than 2M daily requests.</li>
+              <li>Contributed to validation of proprietary spoken-language-understanding models using 100K+ labelled voice samples.</li>
+              <li>Collaborated across engineering and ML functions supporting real-time voice-automation workflows.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="timeline-item reveal" data-reveal>
+          <div class="timeline-marker" aria-hidden="true"></div>
+          <div class="timeline-content">
+            <h3>Software Engineer</h3>
+            <p class="timeline-meta">Orange Business Services · September 2020–August 2022 · Gurugram, India</p>
+            <p class="timeline-descriptor">Global IT, cloud, IoT, and network-solutions integrator</p>
+            <ul class="timeline-highlights">
+              <li>Built a Django enterprise application for spend and subscription management, integrated with Microsoft SQL Server for multi-tenant data operations.</li>
+              <li>Developed Python-based Azure Function microservices for an IoT sensor middleware platform monitoring critical water-dam infrastructure.</li>
+              <li>Delivered real-time WebSocket applications using Django ASGI and Channels.</li>
+              <li>Created a CLI log-analysis tool saving approximately 400+ hours of manual work per month.</li>
+              <li>Built OCR and language-conversion utilities using Tesseract and translation APIs.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="stack" id="stack">
+    <div class="section-inner">
+      <h2>Tools I use to build and operate systems</h2>
+      <div class="stack-grid">
+        <div class="stack-group">
+          <h3><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7 9h5M7 13h9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Backend</h3>
+          <p>Python · Django · Django REST Framework · Celery · REST APIs · WebSockets</p>
+        </div>
+        <div class="stack-group">
+          <h3><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><ellipse cx="12" cy="6" rx="8" ry="3.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 6v6c0 1.8 3.6 3.2 8 3.2s8-1.4 8-3.2V6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 12v6c0 1.8 3.6 3.2 8 3.2s8-1.4 8-3.2v-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Data &amp; messaging</h3>
+          <p>PostgreSQL · Redis · Microsoft SQL Server · Kafka · RabbitMQ · AWS SQS</p>
+        </div>
+        <div class="stack-group">
+          <h3><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 17.5a4 4 0 0 1-.6-7.96A5.5 5.5 0 0 1 17 8.6 4.25 4.25 0 0 1 17.5 17.5H7Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Cloud &amp; delivery</h3>
+          <p>AWS · Docker · ECS · EC2 · Lambda · RDS · API Gateway · ECR · CI/CD</p>
+        </div>
+        <div class="stack-group">
+          <h3><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="6" r="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="6" r="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="18" r="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7.9 7.1 10.4 16M16.1 7.1 13.6 16M8.2 6h7.6" stroke="currentColor" stroke-width="1.6"/></svg>Architecture</h3>
+          <p>Distributed systems · Microservices · Event-driven architecture · Caching · Sharding · Reliability</p>
+        </div>
+        <div class="stack-group stack-group-secondary">
+          <h3><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Applied AI</h3>
+          <p>OpenAI API · Agentic workflows · Evaluation · scikit-learn · H2O.ai</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="recognition" id="recognition">
+    <div class="section-inner recognition-grid">
+      <div>
+        <h2>Education</h2>
+        <ul class="recognition-list">
+          <li>
+            <h3>M.Tech</h3>
+            <p>Malaviya National Institute of Technology, Jaipur · 2018–2020</p>
+          </li>
+          <li>
+            <h3>B.Tech</h3>
+            <p>University College of Engineering and Technology, Hazaribagh · 2013–2017</p>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h2>Recognition</h2>
+        <ul class="recognition-list">
+          <li>
+            <h3>Inspirational Mentor Award</h3>
+            <p>Practice by Numbers — cross-team mentoring and knowledge sharing.</p>
+          </li>
+          <li>
+            <h3>Team Excellence Award</h3>
+            <p>Practice by Numbers — architecture and launch of e-commerce and POS payment systems.</p>
+          </li>
+          <li>
+            <h3>Above &amp; Beyond Award</h3>
+            <p>Orange Business Services — contribution to the software-incubation team.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="focus" id="focus">
+    <div class="section-inner">
+      <h2>Expanding the backend toolkit with practical AI</h2>
+      <p>I’m extending my distributed-systems experience into practical GenAI and agentic AI applications, with an emphasis on reliable orchestration, evaluation, observability, and production integration—not demos that work only in ideal conditions.</p>
+      <ul class="focus-chips">
+        <li>Agent orchestration</li>
+        <li>Tool use</li>
+        <li>Evaluation</li>
+        <li>Guardrails</li>
+        <li>Observability</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="section-inner contact-inner">
+      <h2>Let’s talk about systems that need to scale reliably.</h2>
+      <p>I enjoy discussing backend architecture, payment reliability, technical leadership, and applied AI systems.</p>
+      <div class="contact-ctas">
+        <a class="btn btn-primary" href="https://www.linkedin.com/in/avina5hkr/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+        <a class="btn btn-secondary" href="mailto:avinashkumar3013@gmail.com">Send an email</a>
+        <a class="btn btn-secondary" href="https://github.com/avina5hkr" target="_blank" rel="noopener noreferrer">View GitHub</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="section-inner footer-inner">
+    <p>&copy; <span id="year">2026</span> Avinash Kumar. Built for clarity, reliability, and the open web.</p>
+    <ul class="footer-links">
+      <li><a href="https://github.com/avina5hkr" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/avina5hkr/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+      <li><a href="mailto:avinashkumar3013@gmail.com">Email</a></li>
+      <li><a href="#top">Back to top</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
 </body>
-</html> 
+</html>
